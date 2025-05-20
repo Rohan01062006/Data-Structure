@@ -1,0 +1,55 @@
+#include<stdio.h>
+
+int main()
+{
+   int front = -1, rear = -1, size, ch, element;
+   
+   printf("Enter Size of Queue: ");
+   scanf("%d",&size);
+   
+   int queue[size];
+while (1){
+   printf("\nEnter Choice:\n1.Enqueue\n2.Dequeue\n3.Display\n4.Exit\n");
+   scanf("%d",&ch);
+   
+   if (ch == 1){
+      
+      if (rear == size - 1){
+         printf("\nQueue is full\n");
+      }
+      else{
+         printf("\nEnter Element: ");
+         scanf("%d",&element);
+         if (front == -1)front = 0;
+         rear++;
+         queue[rear] = element;
+         
+         printf("Inserted value is %d\n\n",element);
+      }
+   
+   }
+   else if (ch == 2){
+      if (front == -1 || front > rear){
+         printf("\nQueue is Empty\n");
+      }
+      else{
+         printf("Deleted Element is %d\n\n",queue[front]);
+         front++;
+      }
+      
+   }
+   else if (ch == 3){
+      printf("\nUpdated Queue: \n");
+      for(int i = front; i <= rear; i++){
+         printf("index[%d]: %d\n",i,queue[i]);
+      }
+   }
+   else if (ch == 4){
+      printf("Exiting program...");
+      break;
+   }
+   else{
+      printf("\nInvalid Choice\n");
+   }
+}
+}
