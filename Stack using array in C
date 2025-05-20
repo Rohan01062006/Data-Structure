@@ -1,1 +1,52 @@
 
+#include<stdio.h>
+
+int main()
+{
+    int n, a, top = -1, value, i;
+    printf("Enter Stack size: ");
+    scanf(" %d",&n);
+    
+    int stack[n] ;
+    
+while (1){    
+    printf("\nChoose Operation: ");
+    printf("\n1.Push\n2.Pop\n3.Exit\n");
+    scanf("%d",&a);
+    
+    if (a==1){
+        if (top == n-1){
+            printf("Stack Overflow");
+        }
+        else{
+            printf("Enter Element to push: ");
+            scanf(" %d",&value);
+            top++;
+            stack[top]= value;
+            
+            printf("Updated Stack: ");
+            for(i=top; i>= 0; i--){
+                printf(" %d",stack[i]);
+            }
+        }
+    }
+    else if (a==2){
+        if (top == -1){
+            printf("Stack Underflow");
+        }
+        else{
+            printf("Popped %d",stack[top]);
+            top--;
+            
+            printf("\nUpdated Stack: ");
+            for(i=top; i>= 0; i--){
+                printf(" %d",stack[i]);
+            }
+        }
+    }
+    else{
+        break;
+    }
+}
+return 0;
+}
