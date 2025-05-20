@@ -1,0 +1,30 @@
+#include<stdio.h>
+
+int main()
+{
+    int binary [20], size, top=-1;
+    
+    printf("Enter size: ");
+    scanf(" %d",&size);
+    
+    if (size == 0){
+        printf("\nBinary : 0\n");
+        return 0;
+    }
+    else if(size<0){
+        printf("Warning!! Enter positive number");
+    }
+while (size > 0){
+    
+    binary[++top] = size % 2;
+    size/=2;
+    
+}
+
+printf("\nBinary: ");
+for(int j = top ; j>=0; j--){
+    printf(" %d",binary[j]);
+    
+}
+  return 0;  
+}
