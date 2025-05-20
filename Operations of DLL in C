@@ -134,11 +134,16 @@ void display() {
     int i = 1;
     temp = head;
 
+    if (head == NULL) {
+        printf("\nDoubly Linked List is empty.\n");
+        return;
+    }
+
     printf("\nDoubly Linked List (Forward):\n");
     while (temp != NULL) {
-        printf("Element %d: %d    Next: %p   Prev: %p\n", i, temp->data, temp->next, temp->prev);
+        printf("Node %d: Data = %d | Next = %p | Prev = %p\n", i, temp->data, temp->next, temp->prev);
         if (temp->next == NULL)
-            tail = temp;  // Ensure tail is correct
+            tail = temp;  // Ensure tail is up to date
         temp = temp->next;
         i++;
     }
@@ -147,18 +152,19 @@ void display() {
     temp = tail;
     i = 1;
     while (temp != NULL) {
-        printf("Element %d: %d    Prev: %p   Next: %p\n", i, temp->data, temp->prev, temp->next);
+        printf("Node %d: Data = %d | Prev = %p | Next = %p\n", i, temp->data, temp->prev, temp->next);
         temp = temp->prev;
         i++;
     }
+
     printf("\n");
 }
 
-void main() {
+int main() {
     head = tail = NULL;
     int ch = 0;
 
-    while (ch != 9) {
+    while (ch != 8) {
         printf("\nChoose Operation:\n");
         printf("1. Insert At First\n");
         printf("2. Insert At Last\n");
@@ -179,8 +185,10 @@ void main() {
             case 5: dltAtLast(); break;
             case 6: deleteAfterPosition(); break;
             case 7: display(); break;
-            case 9: printf("Exiting Program...\n"); break;
+            case 8: printf("Exiting Program...\n"); break;
             default: printf("Invalid choice!\n"); break;
         }
     }
+
+    return 0;
 }
