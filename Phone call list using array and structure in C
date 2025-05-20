@@ -1,0 +1,57 @@
+#include <stdio.h>
+
+struct Call {
+    char name[20];
+    long long num;  // Changed from int num[15] to long long num for phone numbers
+};
+
+int main() {
+    int n, choice;
+    int top = -1;  // Single top variable for stack
+
+    printf("Enter size of call list: ");
+    scanf("%d", &n);
+
+    struct Call contacts[n];
+
+    while (1) {  // Infinite loop until user chooses to exit
+        printf("\nChoose Operation:\n1. Push Contact\n2. Pop Contact\n3. Exit\n");
+        printf("Enter choice: ");
+        scanf("%d", &choice);
+
+        if (choice == 1) {
+            if (top >= n - 1) {
+                printf("List size Overflow\n");
+            } else {
+                top++;
+                printf("Enter Contact Name: ");
+                scanf("%s", contacts[top].name);
+
+                printf("Enter Contact Number: ");
+                scanf("%lld", &contacts[top].num);
+
+                printf("\nUpdated List:\n");
+                for (int i = top; i >= 0; i--) {
+                    printf("%s : %lld\n", contacts[i].name, contacts[i].num);
+                }
+            }
+        } 
+        else if (choice == 2) {
+            if (top == -1) {
+                printf("List is empty, nothing to pop.\n");
+            } else {
+                printf("Popped Contact: %s : %lld\n", contacts[top].name, contacts[top].num);
+                top--;
+            }
+        } 
+        else if (choice == 3) {
+            printf("Exiting program.\n");
+            break;
+        } 
+        else {
+            printf("Invalid choice! Try again.\n");
+        }
+    }
+
+    return 0;
+}
