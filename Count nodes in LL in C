@@ -1,0 +1,78 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+struct node {
+    char data[10];
+    struct node *next;
+};
+
+struct node *head = NULL;
+
+void countNodes();
+void print();
+
+int main() {
+    struct node *newnode, *temp;
+    char ch;
+
+    while (1) {
+        printf("Do you want to insert data (y/n): ");
+        scanf(" %c", &ch);
+
+        if (ch == 'y' || ch == 'Y') {
+            newnode = (struct node *)malloc(sizeof(struct node));
+            if (newnode == NULL) {
+                printf("Memory allocation failed\n");
+                return 1;
+            }
+
+            printf("\nEnter data: ");
+            scanf("%9s", newnode->data);
+            newnode->next = NULL;
+
+            if (head == NULL) {
+                head = newnode;
+            } else {
+                temp = head;
+                while (temp->next != NULL) {
+                    temp = temp->next;
+                }
+                temp->next = newnode;
+            }
+
+        } else if (ch == 'n' || ch == 'N') {
+            printf("\nExiting Program...\n");
+            break;
+        } else {
+            printf("Invalid choice. Please enter y or n.\n");
+        }
+    }
+
+    print();
+    countNodes();
+    return 0;
+}
+
+void print() {
+    struct node *temp = head;
+    printf("\nLinked list:\n");
+    while (temp != NULL) {
+        printf("%s -> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+}
+
+void countNodes() {
+    int count = 0;
+    struct node *temp = head;
+
+    while (temp != NULL) {
+        count++;
+        temp = temp->next;
+    }
+
+    printf("\nNumber of nodes: %d\n", count);
+}
+
