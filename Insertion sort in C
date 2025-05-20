@@ -1,0 +1,47 @@
+#include <stdio.h>
+
+int main() {
+    int n, i, j, temp, k, m=0;
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+    int arr[n];
+
+    printf("Enter %d elements: ", n);
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Array before sorting: ");
+    for (i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+    
+     for (i = 1; i < n; i++) {  
+        temp = arr[i];
+        
+        for (j = 0; j < i; j++) {  
+            if (arr[j] > temp) {  
+                break;  
+            }  
+        }
+
+        for (k = i; k > j; k--) {  
+            arr[k] = arr[k - 1];  
+        }
+
+        arr[j] = temp;
+        
+        printf("\npass %d:",i);
+        for(int f=0; f<n; f++){
+            printf(" %d",arr[f]);
+        }
+    }
+    printf("\n");
+    printf("\nArray after sorting: ");
+    for (m = 0; m < n; m++) {
+        printf("%d ", arr[m]);
+    }
+
+    return 0;
+}
